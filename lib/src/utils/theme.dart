@@ -23,6 +23,7 @@ final kThemeData = ThemeData(
     onError: Color(0xFFFE2C2C),
     brightness: Brightness.light,
   ),
+  scaffoldBackgroundColor: _kColorWhite,
   fontFamily: 'SFProDisplay',
   textTheme: TextTheme(
     headline1: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
