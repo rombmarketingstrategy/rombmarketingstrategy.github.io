@@ -28,6 +28,6 @@ final kThemeData = ThemeData(
     subtitle1: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w600, color: _kColorWhite),
     bodyText1: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: _kColorBlack),
     overline: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
-    button: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400, color: _kColorVeryWhite),
+    button: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
   ),
 );

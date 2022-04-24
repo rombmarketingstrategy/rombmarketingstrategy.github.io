@@ -2,10 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rombmarketingstrategy/src/components/button.dart';
 import 'package:rombmarketingstrategy/src/components/checkbox.dart';
 import 'package:rombmarketingstrategy/src/components/date_picker.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
 import 'package:rombmarketingstrategy/src/components/subtitle.dart';
+import 'package:rombmarketingstrategy/src/screens/success.dart';
+import 'package:rombmarketingstrategy/src/utils/app_navigator.dart';
 import 'package:rombmarketingstrategy/src/utils/constants.dart';
 import 'package:rombmarketingstrategy/src/utils/custom_controller.dart';
 import 'package:rombmarketingstrategy/src/utils/paddings.dart';
@@ -28,6 +31,12 @@ class FormScreen extends StatelessWidget {
   final CustomController<bool> controllerUseData = CustomController();
   final CustomController<bool> controllerExclusive = CustomController();
   final CustomController<bool> controllerNotWantAds = CustomController();
+
+  void onClick(BuildContext context) {
+    print("submit all data");
+    // TODO: Add submit logic
+    AppNavigator.off(context, () => SuccessScreen());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +80,7 @@ class FormScreen extends StatelessWidget {
             CheckBox(textKey: 'use_my_data', controller: controllerUseData),
             CheckBox(textKey: 'exclusive', controller: controllerExclusive),
             CheckBox(textKey: 'not_want_ads', controller: controllerNotWantAds),
+            Button(text: tr('send'), onClick: () => onClick(context)),
           ],
         ),
       ),

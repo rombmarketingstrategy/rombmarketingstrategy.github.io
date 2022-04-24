@@ -34,6 +34,7 @@ class CodegenLoader extends AssetLoader{
     "recommendation_code": "Kod preporuke prodajnog predstavnika",
     "signature": "Potpis"
   },
+  "send": "Potvrda",
   "subtitles": {
     "customer": "Popunjava kupac",
     "salesperson": "Popunjava prodavač"
