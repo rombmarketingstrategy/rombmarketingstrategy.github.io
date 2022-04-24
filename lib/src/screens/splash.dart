@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       _redirectDelay,
-      () => AppNavigator.to(context, () => FormScreen()),
+      () => AppNavigator.off(context, () => FormScreen()),
     );
   }
 
