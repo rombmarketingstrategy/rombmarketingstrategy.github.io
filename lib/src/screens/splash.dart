@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rombmarketingstrategy/src/screens/form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,7 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Hero(
-          child: SvgPicture.asset('assets/images/logo.svg'),
+          child: SvgPicture.asset(
+            'assets/images/logo.svg',
+            width: 240.sp,
+          ),
           tag: 'Logo',
         ),
       ),
