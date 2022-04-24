@@ -18,7 +18,7 @@ class Subtitle extends StatelessWidget {
           end: Alignment.centerRight,
           colors: [
             colorScheme.primary,
-            colorScheme.primaryVariant,
+            colorScheme.secondary,
           ],
         ),
       ),

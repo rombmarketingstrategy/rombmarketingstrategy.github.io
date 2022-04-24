@@ -10,10 +10,8 @@ const _kColorYellow = Color(0xFFD08A17);
 final kThemeData = ThemeData(
   colorScheme: const ColorScheme(
     primary: _kColorOrange,
-    primaryVariant: _kColorYellow,
     onPrimary: _kColorVeryWhite,
-    secondary: _kColorOrange,
-    secondaryVariant: _kColorYellow,
+    secondary: _kColorYellow,
     onSecondary: _kColorVeryWhite,
     surface: _kColorVeryWhite,
     onSurface: _kColorBlack,
