@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'RMS',
+      theme: kThemeData,
       home: const SplashScreen(),
     );
   }
