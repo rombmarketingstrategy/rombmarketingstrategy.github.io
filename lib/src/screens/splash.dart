@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rombmarketingstrategy/src/screens/form.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rombmarketingstrategy/src/utils/app_navigator.dart';
 import 'package:rombmarketingstrategy/src/utils/constants.dart';
 
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       _redirectDelay,
-      () => AppNavigator.to(context, () => const FormScreen()),
+      () => AppNavigator.to(context, () => FormScreen()),
     );
   }
 
