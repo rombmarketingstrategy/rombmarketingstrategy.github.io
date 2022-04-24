@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rombmarketingstrategy/src/screens/form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rombmarketingstrategy/src/utils/app_navigator.dart';
+import 'package:rombmarketingstrategy/src/utils/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Hero(
           child: SvgPicture.asset(
-            'assets/images/logo.svg',
+            kPathLogo,
             width: 240.sp,
           ),
           tag: 'Logo',
