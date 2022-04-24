@@ -15,6 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> hr = {
+  "automatic_return": "Automatsko vraćanje za",
   "checkboxes": {
     "contact_me": "Suglasan/suglasna sam da me se kontaktira u svrhu gore navedenih aktivnosti te u svrhu provjere korisniškog iskustva.",
     "exclusive": "Suglasan/suglasna sam da prikupljeni podaci za koje sam dao suglasnosti budu proslijeđeni isključivo kompanijama koje posluju u ovkiru BAT Grupe. U svrhu naknadnog obavještavanja o informacijama vezanim uz uređaj.",
@@ -34,11 +35,13 @@ class CodegenLoader extends AssetLoader{
     "recommendation_code": "Kod preporuke prodajnog predstavnika",
     "signature": "Potpis"
   },
+  "return": "Vrati se",
   "send": "Potvrda",
   "subtitles": {
     "customer": "Popunjava kupac",
     "salesperson": "Popunjava prodavač"
   },
+  "thank_you": "Hvala vam na prijavi",
   "title": "Obrazac za prijavu"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"hr": hr};
