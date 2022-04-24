@@ -24,9 +24,9 @@ final kThemeData = ThemeData(
     brightness: Brightness.light,
   ),
   scaffoldBackgroundColor: _kColorWhite,
-  fontFamily: 'SFProDisplay',
+  fontFamily: 'Montserrat',
   textTheme: TextTheme(
-    headline1: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
+    headline1: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.bold, color: _kColorBlack),
     subtitle1: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w400, color: _kColorWhite),
     bodyText1: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
     button: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: _kColorVeryWhite),
