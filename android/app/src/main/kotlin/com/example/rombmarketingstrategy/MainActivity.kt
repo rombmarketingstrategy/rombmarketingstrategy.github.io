@@ -1,4 +1,4 @@
-package com.example.rombmarketingstrategy
+package hr.romb_ms.rombmarketingstrategy
 
 import io.flutter.embedding.android.FlutterActivity
 
