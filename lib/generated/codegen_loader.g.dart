@@ -24,6 +24,9 @@ class CodegenLoader extends AssetLoader{
     "send_info": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu slanja informacija o uređaju i pružanja tehničke podrške. Ove aktivnosti može izvršiti RMS odnosno društvo koje posluje unutar RMS Grupe ili ovlaštena treća strana.",
     "use_my_data": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu istraživanja tržišta."
   },
+  "error": {
+    "missing_field": "Ovo polje mora bit ispunjeno"
+  },
   "fields": {
     "birthday": "Datum Rođenja",
     "city": "Grad",

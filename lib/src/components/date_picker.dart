@@ -6,24 +6,25 @@ import 'package:rombmarketingstrategy/src/utils/spacers.dart';
 
 class DatePicker extends StatefulWidget {
   final CustomController<String> controller;
-  const DatePicker({required this.controller});
+  final String? error;
+  const DatePicker({required this.controller, this.error});
 
   @override
   State<DatePicker> createState() => _DatePickerState();
 }
 
 class _DatePickerState extends State<DatePicker> {
-  late DateTime selectedDate;
+  DateTime? selectedDate;
   @override
   void initState() {
     super.initState();
-    selectedDate = DateTime.parse(widget.controller.value!);
+    if (widget.controller.value != null) selectedDate = DateTime.parse(widget.controller.value!);
   }
 
   Future<void> onDateClick() async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
+      initialDate: selectedDate ?? DateTime.now(),
       initialDatePickerMode: DatePickerMode.day,
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
@@ -33,7 +34,10 @@ class _DatePickerState extends State<DatePicker> {
     widget.controller.value = picked.toString();
   }
 
-  String get dateStr => '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
+  String get dateStr {
+    if (selectedDate == null) return '';
+    return '${selectedDate?.day}/${selectedDate?.month}/${selectedDate?.year}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +56,16 @@ class _DatePickerState extends State<DatePicker> {
             onTap: onDateClick,
             borderRadius: BorderRadius.circular(200.0),
             child: Ink(
-              padding: Paddings.a16,
+              padding: Paddings.a14,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(200.0),
                 color: Theme.of(context).colorScheme.surface,
+                border: widget.error == null
+                    ? null
+                    : Border.all(
+                        color: Theme.of(context).errorColor,
+                      ),
               ),
               child: Text(
                 dateStr,
@@ -64,7 +73,13 @@ class _DatePickerState extends State<DatePicker> {
               ),
             ),
           ),
-          Spacers.h8,
+          Padding(
+            padding: Paddings.a8,
+            child: Text(
+              widget.error ?? '',
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+          ),
         ],
       ),
     );

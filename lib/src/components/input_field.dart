@@ -5,12 +5,16 @@ import 'package:rombmarketingstrategy/src/utils/spacers.dart';
 
 class InputField extends StatelessWidget {
   final String textKey;
+  final String? error;
   final TextEditingController controller;
   final TextInputType? keyboardType;
-  const InputField({required this.textKey, required this.controller, this.keyboardType});
+  const InputField({required this.textKey, this.error, required this.controller, this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: Paddings.a16,
       child: Column(
@@ -19,24 +23,29 @@ class InputField extends StatelessWidget {
           Spacers.h8,
           Text(
             tr('fields.$textKey'),
-            style: Theme.of(context).textTheme.bodyText1,
+            style: textTheme.bodyText1,
           ),
           Spacers.h8,
           TextField(
-            style: Theme.of(context).textTheme.overline,
+            style: textTheme.overline,
             controller: controller,
             keyboardType: keyboardType,
             decoration: InputDecoration(
+              errorText: error,
+              errorStyle: textTheme.bodyText2,
               filled: true,
-              fillColor: Theme.of(context).colorScheme.surface,
+              fillColor: colorScheme.surface,
               contentPadding: Paddings.h16,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(200.0),
-                borderSide: const BorderSide(width: 0, style: BorderStyle.none),
+                borderSide: BorderSide(
+                  width: error == null ? 0 : 2,
+                  style: error == null ? BorderStyle.none : BorderStyle.solid,
+                ),
               ),
+              // errorBorder:colorScheme.error,
             ),
           ),
-          Spacers.h8,
         ],
       ),
     );
