@@ -18,11 +18,11 @@ class CodegenLoader extends AssetLoader{
   "automatic_return": "Automatsko vraćanje za",
   "checkboxes": {
     "contact_me": "Suglasan/suglasna sam da me se kontaktira u svrhu gore navedenih aktivnosti te u svrhu provjere korisniškog iskustva.",
-    "exclusive": "Suglasan/suglasna sam da prikupljeni podaci za koje sam dao suglasnosti budu proslijeđeni isključivo kompanijama koje posluju u ovkiru BAT Grupe. U svrhu naknadnog obavještavanja o informacijama vezanim uz uređaj.",
-    "i_read_everything": "Ovim potvrđujem da sam pročitao/pročitala politiku obrade osobnih podataka od strane BAT/a u svrhu zaštite privatnosti.",
+    "exclusive": "Suglasan/suglasna sam da prikupljeni podaci za koje sam dao suglasnosti budu proslijeđeni isključivo kompanijama koje posluju u ovkiru RMS Grupe. U svrhu naknadnog obavještavanja o informacijama vezanim uz uređaj.",
+    "i_read_everything": "Ovim potvrđujem da sam pročitao/pročitala politiku obrade osobnih podataka od strane RMS/a u svrhu zaštite privatnosti.",
     "not_want_ads": "Nisam suglasan/suglasna da me kontaktirate u svrhu marketinga i istraživanja tržišta.",
-    "send_info": "Suglasan/suglasna sam da BAT obrađuje moje osobne podatke u svrhu slanja informacija o uređaju i pružanja tehničke podrške. Ove aktivnosti može izvršiti BAT odnosno društvo koje posluje unutar BAT Grupe ili ovlaštena treća strana.",
-    "use_my_data": "Suglasan/suglasna sam da BAT obrađuje moje osobne podatke u svrhu istraživanja tržišta."
+    "send_info": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu slanja informacija o uređaju i pružanja tehničke podrške. Ove aktivnosti može izvršiti RMS odnosno društvo koje posluje unutar RMS Grupe ili ovlaštena treća strana.",
+    "use_my_data": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu istraživanja tržišta."
   },
   "fields": {
     "birthday": "Datum Rođenja",
