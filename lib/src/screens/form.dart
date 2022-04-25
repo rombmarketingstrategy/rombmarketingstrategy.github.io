@@ -85,8 +85,24 @@ class _FormScreenState extends State<FormScreen> {
         errCityCustomer != null ||
         errBirthday != null) return;
 
-    print("submit all data");
-    // TODO: Add submit logic
+    FormService.addFormData(FormData.fromControllers(
+      controllerRecommendation,
+      controllerDeviceCode,
+      controllerLocation,
+      controllerCity,
+      controllerName,
+      controllerPhone,
+      controllerEmail,
+      controllerCityCustomer,
+      controllerBirthday,
+      controllerReadEverything,
+      controllerSendInfo,
+      controllerContactMe,
+      controllerUseData,
+      controllerExclusive,
+      controllerNotWantAds,
+    ));
+
     AppNavigator.off(context, () => SuccessScreen());
   }
 

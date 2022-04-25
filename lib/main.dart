@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rombmarketingstrategy/app.dart';
 import 'package:rombmarketingstrategy/firebase_options.dart';
 import 'package:rombmarketingstrategy/generated/codegen_loader.g.dart';
+import 'package:rombmarketingstrategy/src/services/form_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,4 +21,5 @@ Future<void> main() async {
       child: const MyApp(),
     ),
   );
+  FormService.init();
 }
