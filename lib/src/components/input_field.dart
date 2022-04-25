@@ -5,10 +5,9 @@ import 'package:rombmarketingstrategy/src/utils/spacers.dart';
 
 class InputField extends StatelessWidget {
   final String textKey;
-  final bool isRequired;
   final TextEditingController controller;
   final TextInputType? keyboardType;
-  const InputField({required this.textKey, this.isRequired = false, required this.controller, this.keyboardType});
+  const InputField({required this.textKey, required this.controller, this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class InputField extends StatelessWidget {
         children: [
           Spacers.h8,
           Text(
-            tr('fields.$textKey') + (isRequired ? ' *' : ''),
+            tr('fields.$textKey'),
             style: Theme.of(context).textTheme.bodyText1,
           ),
           Spacers.h8,

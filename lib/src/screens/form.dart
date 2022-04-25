@@ -69,7 +69,7 @@ class FormScreen extends StatelessWidget {
             InputField(textKey: 'city', controller: controllerCity),
             Spacers.h8,
             const Subtitle('customer'),
-            InputField(textKey: 'name_and_surname', isRequired: true, controller: controllerName),
+            InputField(textKey: 'name_and_surname', controller: controllerName),
             InputField(textKey: 'phone', controller: controllerPhone, keyboardType: TextInputType.phone),
             InputField(textKey: 'email', controller: controllerEmail, keyboardType: TextInputType.emailAddress),
             InputField(textKey: 'city', controller: controllerCityCustomer),
