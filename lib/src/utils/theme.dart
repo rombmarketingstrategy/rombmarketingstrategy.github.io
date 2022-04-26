@@ -7,6 +7,7 @@ const _kColorVeryWhite = Color(0xFFFFFFFF);
 const _kColorOrange = Color(0xFFEF682C);
 const _kColorYellow = Color(0xFFD08A17);
 const _kColorRed = Color(0xFFFE2C2C);
+
 final kThemeData = ThemeData(
   colorScheme: const ColorScheme(
     primary: _kColorOrange,
@@ -22,6 +23,7 @@ final kThemeData = ThemeData(
     brightness: Brightness.light,
   ),
   scaffoldBackgroundColor: _kColorWhite,
+  splashColor: _kColorOrange,
   fontFamily: 'Montserrat',
   textTheme: TextTheme(
     headline1: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w700, color: _kColorBlack),
@@ -29,6 +31,6 @@ final kThemeData = ThemeData(
     bodyText1: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: _kColorBlack),
     bodyText2: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: _kColorRed),
     overline: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
-    button: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400, color: _kColorBlack),
+    button: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: _kColorOrange),
   ),
 );
