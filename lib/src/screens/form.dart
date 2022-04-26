@@ -6,6 +6,7 @@ import 'package:rombmarketingstrategy/src/components/button.dart';
 import 'package:rombmarketingstrategy/src/components/checkbox.dart';
 import 'package:rombmarketingstrategy/src/components/date_picker.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
+import 'package:rombmarketingstrategy/src/components/responsive_container.dart';
 import 'package:rombmarketingstrategy/src/components/subtitle.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
 import 'package:rombmarketingstrategy/src/screens/success.dart';
@@ -126,36 +127,41 @@ class _FormScreenState extends State<FormScreen> {
             Spacers.h16,
             Text(tr('title'), style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.center),
             Spacers.h32,
-            const Subtitle('salesperson'),
-            InputField(textKey: 'recommendation_code', controller: controllerRecommendation, error: errRecommendation),
-            InputField(textKey: 'device_code', controller: controllerDeviceCode, error: errDeviceCode),
-            InputField(textKey: 'location', controller: controllerLocation, error: errLocation),
-            InputField(textKey: 'city', controller: controllerCity, error: errCity),
-            Spacers.h8,
-            const Subtitle('customer'),
-            InputField(textKey: 'name_and_surname', controller: controllerName, error: errName),
-            InputField(
-              textKey: 'phone',
-              controller: controllerPhone,
-              keyboardType: TextInputType.phone,
-              error: errPhone,
+            ResponsiveContainer(
+              children: [
+                const Subtitle('salesperson'),
+                InputField(
+                    textKey: 'recommendation_code', controller: controllerRecommendation, error: errRecommendation),
+                InputField(textKey: 'device_code', controller: controllerDeviceCode, error: errDeviceCode),
+                InputField(textKey: 'location', controller: controllerLocation, error: errLocation),
+                InputField(textKey: 'city', controller: controllerCity, error: errCity),
+                Spacers.h8,
+                const Subtitle('customer'),
+                InputField(textKey: 'name_and_surname', controller: controllerName, error: errName),
+                InputField(
+                  textKey: 'phone',
+                  controller: controllerPhone,
+                  keyboardType: TextInputType.phone,
+                  error: errPhone,
+                ),
+                InputField(
+                  textKey: 'email',
+                  controller: controllerEmail,
+                  keyboardType: TextInputType.emailAddress,
+                  error: errEmail,
+                ),
+                InputField(textKey: 'city', controller: controllerCityCustomer, error: errCityCustomer),
+                DatePicker(controller: controllerBirthday, error: errBirthday),
+                // TODO: Add signature area
+                CheckBox(textKey: 'i_read_everything', controller: controllerReadEverything),
+                CheckBox(textKey: 'send_info', controller: controllerSendInfo),
+                CheckBox(textKey: 'contact_me', controller: controllerContactMe),
+                CheckBox(textKey: 'use_my_data', controller: controllerUseData),
+                CheckBox(textKey: 'exclusive', controller: controllerExclusive),
+                CheckBox(textKey: 'not_want_ads', controller: controllerNotWantAds),
+                Button(text: tr('send'), onClick: () => onClick(context)),
+              ],
             ),
-            InputField(
-              textKey: 'email',
-              controller: controllerEmail,
-              keyboardType: TextInputType.emailAddress,
-              error: errEmail,
-            ),
-            InputField(textKey: 'city', controller: controllerCityCustomer, error: errCityCustomer),
-            DatePicker(controller: controllerBirthday, error: errBirthday),
-            // TODO: Add signature area
-            CheckBox(textKey: 'i_read_everything', controller: controllerReadEverything),
-            CheckBox(textKey: 'send_info', controller: controllerSendInfo),
-            CheckBox(textKey: 'contact_me', controller: controllerContactMe),
-            CheckBox(textKey: 'use_my_data', controller: controllerUseData),
-            CheckBox(textKey: 'exclusive', controller: controllerExclusive),
-            CheckBox(textKey: 'not_want_ads', controller: controllerNotWantAds),
-            Button(text: tr('send'), onClick: () => onClick(context)),
           ],
         ),
       ),

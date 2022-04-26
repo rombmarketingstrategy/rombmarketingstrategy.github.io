@@ -10,6 +10,7 @@ class Subtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
+      width: double.infinity,
       padding: Paddings.a16,
       margin: Paddings.v16,
       decoration: BoxDecoration(
