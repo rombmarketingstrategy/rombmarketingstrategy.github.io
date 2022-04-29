@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -153,11 +154,12 @@ class _FormScreenState extends State<FormScreen> {
                     ),
                     tag: 'Logo',
                   ),
-                  SmallIconButton(
-                    onTap: onClickAdmin,
-                    icon: Icons.admin_panel_settings_sharp,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  )
+                  if (!kIsWeb)
+                    SmallIconButton(
+                      onTap: onClickAdmin,
+                      icon: Icons.admin_panel_settings_sharp,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    )
                 ],
               ),
             ),
