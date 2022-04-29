@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rombmarketingstrategy/src/components/field_error.dart';
+import 'package:rombmarketingstrategy/src/components/small_icon_button.dart';
 import 'package:rombmarketingstrategy/src/utils/paddings.dart';
 import 'package:rombmarketingstrategy/src/utils/spacers.dart';
 import 'package:signature/signature.dart';
@@ -24,16 +25,9 @@ class InputSignature extends StatelessWidget {
           Row(
             children: [
               Expanded(child: Text(tr('fields.signature'), style: Theme.of(context).textTheme.bodyText1)),
-              InkWell(
+              SmallIconButton(
                 onTap: controller.clear,
-                borderRadius: BorderRadius.circular(100),
-                child: Ink(
-                  padding: Paddings.a4,
-                  child: Icon(
-                    Icons.refresh,
-                    size: 24.sp,
-                  ),
-                ),
+                icon: Icons.refresh,
               ),
             ],
           ),
