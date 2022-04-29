@@ -9,8 +9,10 @@ import 'package:rombmarketingstrategy/src/components/date_picker.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
 import 'package:rombmarketingstrategy/src/components/input_signature.dart';
 import 'package:rombmarketingstrategy/src/components/responsive_container.dart';
+import 'package:rombmarketingstrategy/src/components/small_icon_button.dart';
 import 'package:rombmarketingstrategy/src/components/subtitle.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
+import 'package:rombmarketingstrategy/src/screens/admin.dart';
 import 'package:rombmarketingstrategy/src/screens/success.dart';
 import 'package:rombmarketingstrategy/src/services/form_service.dart';
 import 'package:rombmarketingstrategy/src/utils/app_navigator.dart';
@@ -119,6 +121,10 @@ class _FormScreenState extends State<FormScreen> {
     AppNavigator.off(context, () => SuccessScreen());
   }
 
+  void onClickAdmin() {
+    AppNavigator.to(context, () => const AdminScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -126,15 +132,24 @@ class _FormScreenState extends State<FormScreen> {
       body: SafeArea(
         child: ListView(
           children: [
-            Container(
+            Padding(
               padding: Paddings.a16,
-              alignment: Alignment.centerLeft,
-              child: Hero(
-                child: SvgPicture.asset(
-                  kPathLogo,
-                  width: 80.sp,
-                ),
-                tag: 'Logo',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Hero(
+                    child: SvgPicture.asset(
+                      kPathLogo,
+                      width: 80.sp,
+                    ),
+                    tag: 'Logo',
+                  ),
+                  SmallIconButton(
+                    onTap: onClickAdmin,
+                    icon: Icons.admin_panel_settings_sharp,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  )
+                ],
               ),
             ),
             Spacers.h16,
