@@ -17,9 +17,13 @@ class FormService {
 
   static Future<void> addSavedFormData() async {
     final allData = LocalStorageService.dataToSend;
+    final List<Future> futures = [];
     for (final formData in allData) {
-      await collection.add(formData.toMap());
+      futures.add(() async {
+        await collection?.add(formData.toMap());
+      }());
     }
+    await Future.wait(futures);
     LocalStorageService.clear();
   }
 }
