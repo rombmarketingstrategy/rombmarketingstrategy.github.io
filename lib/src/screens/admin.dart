@@ -41,11 +41,11 @@ class _AdminScreenState extends State<AdminScreen> {
     return CustomScaffold(
       isLoading: isLoading,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: Paddings.a16,
-              child: Row(
+        child: Padding(
+          padding: Paddings.a16,
+          child: Column(
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SmallIconButton(
@@ -62,27 +62,27 @@ class _AdminScreenState extends State<AdminScreen> {
                   ),
                 ],
               ),
-            ),
-            Spacers.expanded,
-            Text(
-              remainingText,
-              style: Theme.of(context).textTheme.headline1,
-              textAlign: TextAlign.center,
-            ),
-            if (LocalStorageService.dataIsEmpty) ...[
               Spacers.expanded,
-              Spacers.h64,
-            ] else ...[
               Text(
-                '${LocalStorageService.dataLength}',
-                style: Theme.of(context).textTheme.headline1?.copyWith(color: Theme.of(context).colorScheme.primary),
+                remainingText,
+                style: Theme.of(context).textTheme.headline1,
                 textAlign: TextAlign.center,
               ),
-              Spacers.expanded,
-              Button(text: tr('admin.save'), onClick: onSave),
-              Spacers.h16,
+              if (LocalStorageService.dataIsEmpty) ...[
+                Spacers.expanded,
+                Spacers.h64,
+              ] else ...[
+                Text(
+                  '${LocalStorageService.dataLength}',
+                  style: Theme.of(context).textTheme.headline1?.copyWith(color: Theme.of(context).colorScheme.primary),
+                  textAlign: TextAlign.center,
+                ),
+                Spacers.expanded,
+                Button(text: tr('admin.save'), onClick: onSave),
+                Spacers.h16,
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
