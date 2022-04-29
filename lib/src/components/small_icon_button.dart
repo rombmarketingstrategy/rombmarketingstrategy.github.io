@@ -6,7 +6,9 @@ class SmallIconButton extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
   final Color? color;
-  const SmallIconButton({required this.onTap, required this.icon, this.color});
+  final double? size;
+
+  const SmallIconButton({required this.onTap, required this.icon, this.size, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class SmallIconButton extends StatelessWidget {
         padding: Paddings.a4,
         child: Icon(
           icon,
-          size: 24.sp,
+          size: size ?? 24.sp,
           color: color ?? Theme.of(context).colorScheme.onBackground,
         ),
       ),

@@ -15,6 +15,11 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> hr = {
+  "admin": {
+    "all_sent": "Nema preostalih prijava",
+    "remaining": "Preostalih prijava",
+    "save": "Spremi"
+  },
   "automatic_return": "Automatsko vraćanje za",
   "checkboxes": {
     "contact_me": "Suglasan/suglasna sam da me se kontaktira u svrhu gore navedenih aktivnosti te u svrhu provjere korisniškog iskustva.",

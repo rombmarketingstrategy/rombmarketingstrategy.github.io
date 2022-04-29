@@ -5,13 +5,12 @@ import 'package:rombmarketingstrategy/app.dart';
 import 'package:rombmarketingstrategy/firebase_options.dart';
 import 'package:rombmarketingstrategy/generated/codegen_loader.g.dart';
 import 'package:rombmarketingstrategy/src/services/form_service.dart';
+import 'package:rombmarketingstrategy/src/services/local_storage_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     EasyLocalization(
@@ -22,4 +21,5 @@ Future<void> main() async {
     ),
   );
   FormService.init();
+  LocalStorageService.init();
 }
