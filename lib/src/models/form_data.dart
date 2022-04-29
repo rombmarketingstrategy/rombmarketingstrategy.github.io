@@ -96,7 +96,7 @@ class FormData {
       'useData': useData,
       'exclusive': exclusive,
       'notWantAds': notWantAds,
-      'timestamp': timestamp,
+      'timestamp': timestamp.microsecondsSinceEpoch,
     };
   }
 
