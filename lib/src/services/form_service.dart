@@ -12,8 +12,7 @@ class FormService {
     collection = FirebaseFirestore.instance.collection('form');
   }
 
-  static Future<bool> addFormData(FormData formData) async {
+  static Future<void> addFormData(FormData formData) async {
     await collection.add({...formData.toMap()});
-    return true;
   }
 }

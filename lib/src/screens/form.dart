@@ -7,6 +7,7 @@ import 'package:rombmarketingstrategy/src/components/checkbox.dart';
 import 'package:rombmarketingstrategy/src/components/custom_scaffold.dart';
 import 'package:rombmarketingstrategy/src/components/date_picker.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
+import 'package:rombmarketingstrategy/src/components/input_signature.dart';
 import 'package:rombmarketingstrategy/src/components/responsive_container.dart';
 import 'package:rombmarketingstrategy/src/components/subtitle.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
@@ -17,6 +18,7 @@ import 'package:rombmarketingstrategy/src/utils/constants.dart';
 import 'package:rombmarketingstrategy/src/utils/custom_controller.dart';
 import 'package:rombmarketingstrategy/src/utils/paddings.dart';
 import 'package:rombmarketingstrategy/src/utils/spacers.dart';
+import 'package:signature/signature.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({Key? key}) : super(key: key);
@@ -41,6 +43,8 @@ class _FormScreenState extends State<FormScreen> {
   final CustomController<bool> controllerUseData = CustomController();
   final CustomController<bool> controllerExclusive = CustomController();
   final CustomController<bool> controllerNotWantAds = CustomController();
+  final SignatureController controllerSignature =
+      SignatureController(penStrokeWidth: 2, penColor: Colors.blue.shade900);
   String? errRecommendation,
       errDeviceCode,
       errLocation,
@@ -49,7 +53,8 @@ class _FormScreenState extends State<FormScreen> {
       errPhone,
       errEmail,
       errCityCustomer,
-      errBirthday;
+      errBirthday,
+      errSignature;
   bool isLoading = false;
 
   void validateData() {
@@ -62,6 +67,7 @@ class _FormScreenState extends State<FormScreen> {
     errEmail = null;
     errCityCustomer = null;
     errBirthday = null;
+    errSignature = null;
 
     if (controllerRecommendation.value.text.isEmpty) errRecommendation = tr('error.missing_field');
     if (controllerDeviceCode.value.text.isEmpty) errDeviceCode = tr('error.missing_field');
@@ -72,11 +78,12 @@ class _FormScreenState extends State<FormScreen> {
     if (controllerEmail.value.text.isEmpty) errEmail = tr('error.missing_field');
     if (controllerCityCustomer.value.text.isEmpty) errCityCustomer = tr('error.missing_field');
     if (controllerBirthday.value?.isEmpty ?? true) errBirthday = tr('error.missing_field');
+    if (controllerSignature.isEmpty) errSignature = tr('error.missing_field');
 
     setState(() {});
   }
 
-  void onClick(BuildContext context) {
+  Future<void> onClick(BuildContext context) async {
     validateData();
     if (errRecommendation != null ||
         errDeviceCode != null ||
@@ -88,8 +95,9 @@ class _FormScreenState extends State<FormScreen> {
         errCityCustomer != null ||
         errBirthday != null) return;
     setState(() => isLoading = true);
+    final png = await controllerSignature.toPngBytes();
 
-    FormService.addFormData(FormData.fromControllers(
+    await FormService.addFormData(FormData.fromControllers(
       controllerRecommendation,
       controllerDeviceCode,
       controllerLocation,
@@ -157,7 +165,7 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 InputField(textKey: 'city', controller: controllerCityCustomer, error: errCityCustomer),
                 DatePicker(controller: controllerBirthday, error: errBirthday),
-                // TODO: Add signature area
+                InputSignature(controller: controllerSignature, error: errSignature),
                 CheckBox(textKey: 'i_read_everything', controller: controllerReadEverything),
                 CheckBox(textKey: 'send_info', controller: controllerSendInfo),
                 CheckBox(textKey: 'contact_me', controller: controllerContactMe),
