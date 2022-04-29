@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rombmarketingstrategy/src/components/button.dart';
 import 'package:rombmarketingstrategy/src/components/checkbox.dart';
+import 'package:rombmarketingstrategy/src/components/custom_scaffold.dart';
 import 'package:rombmarketingstrategy/src/components/date_picker.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
 import 'package:rombmarketingstrategy/src/components/responsive_container.dart';
@@ -49,6 +50,7 @@ class _FormScreenState extends State<FormScreen> {
       errEmail,
       errCityCustomer,
       errBirthday;
+  bool isLoading = false;
 
   void validateData() {
     errRecommendation = null;
@@ -85,6 +87,7 @@ class _FormScreenState extends State<FormScreen> {
         errEmail != null ||
         errCityCustomer != null ||
         errBirthday != null) return;
+    setState(() => isLoading = true);
 
     FormService.addFormData(FormData.fromControllers(
       controllerRecommendation,
@@ -104,12 +107,14 @@ class _FormScreenState extends State<FormScreen> {
       controllerNotWantAds,
     ));
 
+    setState(() => isLoading = false);
     AppNavigator.off(context, () => SuccessScreen());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
+      isLoading: isLoading,
       body: SafeArea(
         child: ListView(
           children: [
