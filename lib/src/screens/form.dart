@@ -87,38 +87,47 @@ class _FormScreenState extends State<FormScreen> {
 
   Future<void> onClick(BuildContext context) async {
     validateData();
-    if (errRecommendation != null ||
-        errDeviceCode != null ||
-        errLocation != null ||
-        errCity != null ||
-        errName != null ||
-        errPhone != null ||
-        errEmail != null ||
-        errCityCustomer != null ||
-        errBirthday != null) return;
-    setState(() => isLoading = true);
-    final png = await controllerSignature.toPngBytes();
+    try {
+      if (errRecommendation != null ||
+          errDeviceCode != null ||
+          errLocation != null ||
+          errCity != null ||
+          errName != null ||
+          errPhone != null ||
+          errEmail != null ||
+          errCityCustomer != null ||
+          errBirthday != null) return;
+      setState(() => isLoading = true);
+      final png = await controllerSignature.toPngBytes();
 
-    await FormService.addFormData(FormData.fromControllers(
-      controllerRecommendation,
-      controllerDeviceCode,
-      controllerLocation,
-      controllerCity,
-      controllerName,
-      controllerPhone,
-      controllerEmail,
-      controllerCityCustomer,
-      controllerBirthday,
-      controllerReadEverything,
-      controllerSendInfo,
-      controllerContactMe,
-      controllerUseData,
-      controllerExclusive,
-      controllerNotWantAds,
-    ));
+      await FormService.addFormData(FormData.fromControllers(
+        controllerRecommendation,
+        controllerDeviceCode,
+        controllerLocation,
+        controllerCity,
+        controllerName,
+        controllerPhone,
+        controllerEmail,
+        controllerCityCustomer,
+        controllerBirthday,
+        controllerReadEverything,
+        controllerSendInfo,
+        controllerContactMe,
+        controllerUseData,
+        controllerExclusive,
+        controllerNotWantAds,
+      ));
 
-    setState(() => isLoading = false);
-    AppNavigator.off(context, () => SuccessScreen());
+      setState(() => isLoading = false);
+      AppNavigator.off(context, () => SuccessScreen());
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Theme.of(context).errorColor,
+          content: Text(tr('error.something_went_wrong')),
+        ),
+      );
+    }
   }
 
   void onClickAdmin() {
