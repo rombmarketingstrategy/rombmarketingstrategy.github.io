@@ -73,13 +73,14 @@ class _DatePickerState extends State<DatePicker> {
               ),
             ),
           ),
-          Padding(
-            padding: Paddings.a8,
-            child: Text(
-              widget.error ?? '',
-              style: Theme.of(context).textTheme.bodyText2,
+          if (widget.error != null)
+            Padding(
+              padding: Paddings.a8,
+              child: Text(
+                widget.error ?? '',
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
             ),
-          ),
         ],
       ),
     );
