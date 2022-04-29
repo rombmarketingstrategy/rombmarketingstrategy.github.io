@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:rombmarketingstrategy/src/components/field_error.dart';
 import 'package:rombmarketingstrategy/src/utils/custom_controller.dart';
 import 'package:rombmarketingstrategy/src/utils/paddings.dart';
 import 'package:rombmarketingstrategy/src/utils/spacers.dart';
@@ -73,14 +74,7 @@ class _DatePickerState extends State<DatePicker> {
               ),
             ),
           ),
-          if (widget.error != null)
-            Padding(
-              padding: Paddings.a8,
-              child: Text(
-                widget.error ?? '',
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
-            ),
+          FieldError(widget.error),
         ],
       ),
     );
