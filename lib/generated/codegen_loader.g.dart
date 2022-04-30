@@ -30,6 +30,7 @@ class CodegenLoader extends AssetLoader{
     "use_my_data": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu istraživanja tržišta."
   },
   "error": {
+    "has_no_internet": "Niste prispojeni na internet, molim vas spojite se pa probajte opet kasnije.",
     "missing_field": "Ovo polje mora bit ispunjeno",
     "something_went_wrong": "Nešto je pošlo zlu, molim vas probajte opet kasnije."
   },

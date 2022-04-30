@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rombmarketingstrategy/src/components/button.dart';
 import 'package:rombmarketingstrategy/src/components/custom_scaffold.dart';
 import 'package:rombmarketingstrategy/src/components/small_icon_button.dart';
@@ -30,6 +31,16 @@ class _AdminScreenState extends State<AdminScreen> {
   void onBack() => AppNavigator.back(context);
 
   Future<void> onSave() async {
+    if (!(await InternetConnectionChecker().hasConnection)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Theme.of(context).errorColor,
+          content: Text(tr('error.has_no_connection')),
+        ),
+      );
+      return;
+    }
+
     setState(() => isLoading = true);
     await FormService.addSavedFormData();
     setState(() => isLoading = false);
