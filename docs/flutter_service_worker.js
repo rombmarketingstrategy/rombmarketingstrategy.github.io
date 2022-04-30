@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "74ffe3efbd3acdb72918b9c2fc18cca3",
-"index.html": "7a25cf7533045d9c84bfdc5a023fd645",
-"/": "7a25cf7533045d9c84bfdc5a023fd645",
-"main.dart.js": "64f1ea60cd78af8811a40dcf31900626",
+"index.html": "2709790ed1a1cffc3c26469f95876d34",
+"/": "2709790ed1a1cffc3c26469f95876d34",
+"main.dart.js": "9be8f9502e229d1e07ea19e2e8f91669",
 "icons/favicon-16x16.png": "9d9f04490764595acbfe7ab761b7f452",
 "icons/favicon.ico": "32e603374e202b25198581094a419467",
 "icons/apple-icon.png": "b4af5e9011068f6caf108fef4e1797e8",
@@ -49,7 +49,7 @@ const RESOURCES = {
 "assets/assets/fonts/Montserrat-Bold.otf": "9c71d42b6a840ecfda8fc555040a1c76",
 "assets/assets/fonts/Montserrat-Regular.otf": "92db9a0772b3732e6d686fec3711af42",
 "assets/assets/fonts/Montserrat-SemiBold.otf": "bb3740d350b0186ce32b5678972bf061",
-"assets/assets/translations/hr.json": "68609f0557fd4f625216ab7d0bf8d1c0",
+"assets/assets/translations/hr.json": "eb3ec15d108e57ba7f189d593defa1e9",
 "assets/assets/animations/success.json": "12fa6be121b03164ac9bb1f9055e730d",
 "canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
 "canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
