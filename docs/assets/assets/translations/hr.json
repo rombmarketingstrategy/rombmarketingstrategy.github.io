@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "all_sent": "Nema preostalih prijava",
+    "remaining": "Preostalih prijava",
+    "save": "Spremi"
+  },
+  "automatic_return": "Automatsko vraćanje za",
+  "checkboxes": {
+    "contact_me": "Suglasan/suglasna sam da me se kontaktira u svrhu gore navedenih aktivnosti te u svrhu provjere korisniškog iskustva.",
+    "exclusive": "Suglasan/suglasna sam da prikupljeni podaci za koje sam dao suglasnosti budu proslijeđeni isključivo kompanijama koje posluju u ovkiru RMS Grupe. U svrhu naknadnog obavještavanja o informacijama vezanim uz uređaj.",
+    "i_read_everything": "Ovim potvrđujem da sam pročitao/pročitala politiku obrade osobnih podataka od strane RMS/a u svrhu zaštite privatnosti.",
+    "not_want_ads": "Nisam suglasan/suglasna da me kontaktirate u svrhu marketinga i istraživanja tržišta.",
+    "send_info": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu slanja informacija o uređaju i pružanja tehničke podrške. Ove aktivnosti može izvršiti RMS odnosno društvo koje posluje unutar RMS Grupe ili ovlaštena treća strana.",
+    "use_my_data": "Suglasan/suglasna sam da RMS obrađuje moje osobne podatke u svrhu istraživanja tržišta."
+  },
+  "error": {
+    "has_no_internet": "Niste prispojeni na internet, molim vas spojite se pa probajte opet kasnije.",
+    "missing_field": "Ovo polje mora bit ispunjeno",
+    "something_went_wrong": "Nešto je pošlo zlu, molim vas probajte opet kasnije."
+  },
+  "fields": {
+    "birthday": "Datum Rođenja",
+    "city": "Grad",
+    "device_code": "Jedinstveni kod uređaja",
+    "email": "E-Mail",
+    "location": "Prodajno mjesto",
+    "name_and_surname": "Ime i Prezime",
+    "phone": "Telefon",
+    "recommendation_code": "Kod preporuke prodajnog predstavnika",
+    "signature": "Potpis"
+  },
+  "return": "Vrati se",
+  "send": "Potvrda",
+  "subtitles": {
+    "customer": "Popunjava kupac",
+    "salesperson": "Popunjava prodavač"
+  },
+  "thank_you": "Hvala vam na prijavi",
+  "title": "Obrazac za prijavu"
+}
