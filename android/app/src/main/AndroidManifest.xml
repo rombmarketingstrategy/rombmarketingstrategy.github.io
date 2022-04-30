@@ -2,6 +2,7 @@
     package="hr.romb_ms.rombmarketingstrategy">
    <application
         android:label="RMS"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
