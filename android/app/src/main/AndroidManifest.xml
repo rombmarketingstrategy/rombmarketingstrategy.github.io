@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hr.romb_ms.rombmarketingstrategy">
    <application
-        android:label="rombmarketingstrategy"
-        android:icon="@mipmap/ic_launcher">
+        android:label="RMS"
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
