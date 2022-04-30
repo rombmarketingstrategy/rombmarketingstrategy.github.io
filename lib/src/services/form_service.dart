@@ -1,6 +1,7 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
 import 'package:rombmarketingstrategy/src/services/local_storage_service.dart';
@@ -16,10 +17,28 @@ class FormService {
     }
   }
 
-      if (!(await InternetConnectionChecker().hasConnection)) {
+  static Future<void> uploadFile(Uint8List file, String id) async {
+    final Reference ref = FirebaseStorage.instance.ref().child('signatures').child('/$id.jpg');
+    await ref.putData(file, SettableMetadata(contentType: 'image/jpeg'));
+  }
 
-    if (collection == null) init();
-    await collection?.add(formData.toMapForFirebase());
+  static Future<bool> addFormData(FormData formData) async {
+    try {
+      if (!(await InternetConnectionChecker().hasConnection)) {
+        LocalStorageService.addNewData(formData);
+        return true;
+      }
+
+      if (collection == null) init();
+
+      final document = await collection?.add(formData.toMapForFirebase());
+      if (document == null) return false;
+      await uploadFile(formData.png, document.id);
+
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   static Future<void> addSavedFormData() async {
@@ -30,7 +49,7 @@ class FormService {
     final List<Future> futures = [];
     for (final formData in allData) {
       futures.add(() async {
-        await collection?.add(formData.toMapForFirebase());
+        addFormData(formData);
       }());
     }
     await Future.wait(futures);

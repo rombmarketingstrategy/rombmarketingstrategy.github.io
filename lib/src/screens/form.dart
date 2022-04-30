@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -99,36 +101,45 @@ class _FormScreenState extends State<FormScreen> {
           errCityCustomer != null ||
           errBirthday != null) return;
       setState(() => isLoading = true);
-      final png = await controllerSignature.toPngBytes();
+      final Uint8List? png = await controllerSignature.toPngBytes();
+      if (png == null) return showSomethingWentWrong();
 
-      await FormService.addFormData(FormData.fromControllers(
-        controllerRecommendation,
-        controllerDeviceCode,
-        controllerLocation,
-        controllerCity,
-        controllerName,
-        controllerPhone,
-        controllerEmail,
-        controllerCityCustomer,
-        controllerBirthday,
-        controllerReadEverything,
-        controllerSendInfo,
-        controllerContactMe,
-        controllerUseData,
-        controllerExclusive,
-        controllerNotWantAds,
-      ));
-
-      setState(() => isLoading = false);
-      AppNavigator.off(context, () => SuccessScreen());
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Theme.of(context).errorColor,
-          content: Text(tr('error.something_went_wrong')),
+      final bool success = await FormService.addFormData(
+        FormData.fromControllers(
+          controllerRecommendation,
+          controllerDeviceCode,
+          controllerLocation,
+          controllerCity,
+          controllerName,
+          controllerPhone,
+          controllerEmail,
+          controllerCityCustomer,
+          controllerBirthday,
+          controllerReadEverything,
+          controllerSendInfo,
+          controllerContactMe,
+          controllerUseData,
+          controllerExclusive,
+          controllerNotWantAds,
+          png,
         ),
       );
+      if (!success) return showSomethingWentWrong();
+
+      AppNavigator.off(context, () => SuccessScreen());
+    } catch (e) {
+      showSomethingWentWrong();
     }
+  }
+
+  void showSomethingWentWrong() {
+    setState(() => isLoading = false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Theme.of(context).errorColor,
+        content: Text(tr('error.something_went_wrong')),
+      ),
+    );
   }
 
   void onClickAdmin() {
