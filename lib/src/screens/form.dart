@@ -108,7 +108,9 @@ class _FormScreenState extends State<FormScreen> {
           errPhone != null ||
           errEmail != null ||
           errCityCustomer != null ||
-          errBirthday != null) return;
+          errBirthday != null ||
+          errSignature != null ||
+          errCheckboxes != null) return;
       setState(() => isLoading = true);
       final Uint8List? png = await controllerSignature.toPngBytes();
       if (png == null) return showSomethingWentWrong();
