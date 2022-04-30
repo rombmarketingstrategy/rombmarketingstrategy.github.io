@@ -9,6 +9,7 @@ import 'package:rombmarketingstrategy/src/components/button.dart';
 import 'package:rombmarketingstrategy/src/components/checkbox.dart';
 import 'package:rombmarketingstrategy/src/components/custom_scaffold.dart';
 import 'package:rombmarketingstrategy/src/components/date_picker.dart';
+import 'package:rombmarketingstrategy/src/components/field_error.dart';
 import 'package:rombmarketingstrategy/src/components/input_field.dart';
 import 'package:rombmarketingstrategy/src/components/input_signature.dart';
 import 'package:rombmarketingstrategy/src/components/responsive_container.dart';
@@ -59,7 +60,8 @@ class _FormScreenState extends State<FormScreen> {
       errEmail,
       errCityCustomer,
       errBirthday,
-      errSignature;
+      errSignature,
+      errCheckboxes;
   bool isLoading = false;
 
   void validateData() {
@@ -73,6 +75,7 @@ class _FormScreenState extends State<FormScreen> {
     errCityCustomer = null;
     errBirthday = null;
     errSignature = null;
+    errCheckboxes = null;
 
     if (controllerRecommendation.value.text.isEmpty) errRecommendation = tr('error.missing_field');
     if (controllerDeviceCode.value.text.isEmpty) errDeviceCode = tr('error.missing_field');
@@ -84,6 +87,12 @@ class _FormScreenState extends State<FormScreen> {
     if (controllerCityCustomer.value.text.isEmpty) errCityCustomer = tr('error.missing_field');
     if (controllerBirthday.value?.isEmpty ?? true) errBirthday = tr('error.missing_field');
     if (controllerSignature.isEmpty) errSignature = tr('error.missing_field');
+    if (!(controllerReadEverything.value ?? false) ||
+        !(controllerSendInfo.value ?? false) ||
+        !(controllerContactMe.value ?? false) ||
+        !(controllerUseData.value ?? false) ||
+        !(controllerExclusive.value ?? false) ||
+        !(controllerNotWantAds.value ?? false)) errCheckboxes = tr('error.checkboxes_required');
 
     setState(() {});
   }
@@ -209,6 +218,7 @@ class _FormScreenState extends State<FormScreen> {
                 CheckBox(textKey: 'use_my_data', controller: controllerUseData),
                 CheckBox(textKey: 'exclusive', controller: controllerExclusive),
                 CheckBox(textKey: 'not_want_ads', controller: controllerNotWantAds),
+                FieldError(errCheckboxes),
                 Button(text: tr('send'), onClick: () => onClick(context)),
               ],
             ),
