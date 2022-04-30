@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:rombmarketingstrategy/src/utils/custom_controller.dart';
+import 'package:rombmarketingstrategy/src/utils/list_to_uint8list.dart';
 
 class FormData {
   late String recommendation;
@@ -22,6 +24,7 @@ class FormData {
   late bool exclusive;
   late bool notWantAds;
   late Timestamp timestamp;
+  late Uint8List png;
 
   FormData(
     this.recommendation,
@@ -38,7 +41,8 @@ class FormData {
     this.contactMe,
     this.useData,
     this.exclusive,
-    this.notWantAds, [
+    this.notWantAds,
+    this.png, [
     Timestamp? timestamp,
   ]) {
     this.timestamp = timestamp ?? Timestamp.now();
@@ -60,6 +64,7 @@ class FormData {
     CustomController<bool> controllerUseData,
     CustomController<bool> controllerExclusive,
     CustomController<bool> controllerNotWantAds,
+    this.png,
   ) {
     recommendation = controllerRecommendation.value.text;
     deviceCode = controllerDeviceCode.value.text;
@@ -96,13 +101,28 @@ class FormData {
       'useData': useData,
       'exclusive': exclusive,
       'notWantAds': notWantAds,
+      'png': jsonEncode(png),
       'timestamp': timestamp.microsecondsSinceEpoch,
     };
   }
 
   Map<String, dynamic> toMapForFirebase() {
     return {
-      ...toMap(),
+      'recommendation': recommendation,
+      'deviceCode': deviceCode,
+      'location': location,
+      'city': city,
+      'name': name,
+      'phone': phone,
+      'email': email,
+      'cityCustomer': cityCustomer,
+      'birthday': birthday,
+      'readEverything': readEverything,
+      'sendInfo': sendInfo,
+      'contactMe': contactMe,
+      'useData': useData,
+      'exclusive': exclusive,
+      'notWantAds': notWantAds,
       'timestamp': timestamp,
     };
   }
@@ -124,6 +144,7 @@ class FormData {
       map['useData'] as bool,
       map['exclusive'] as bool,
       map['notWantAds'] as bool,
+      listToUInt8List(jsonDecode(map['png'] as String) as List<dynamic>),
       Timestamp.fromMicrosecondsSinceEpoch(map['timestamp'] as int),
     );
   }
