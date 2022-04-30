@@ -49,7 +49,7 @@ class _DatePickerState extends State<DatePicker> {
         children: [
           Spacers.h8,
           Text(
-            tr('fields.birthday') + '*',
+            tr('fields.birthday'),
             style: Theme.of(context).textTheme.bodyText1,
           ),
           Spacers.h8,

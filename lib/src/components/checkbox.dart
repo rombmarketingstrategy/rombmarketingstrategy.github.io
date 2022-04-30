@@ -57,7 +57,7 @@ class _CheckBoxState extends State<CheckBox> {
           Spacers.w8,
           Expanded(
             child: Text(
-              tr('checkboxes.${widget.textKey}') + '*',
+              tr('checkboxes.${widget.textKey}'),
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
