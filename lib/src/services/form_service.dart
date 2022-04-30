@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
 import 'package:rombmarketingstrategy/src/services/local_storage_service.dart';
 
@@ -11,13 +11,12 @@ class FormService {
   static List<FormData> formDatas = [];
 
   static Future<void> init() async {
-    if (await hasInternet()) {
+    if (await InternetConnectionChecker().hasConnection) {
       collection = FirebaseFirestore.instance.collection('form');
     }
   }
 
-  static Future<void> addFormData(FormData formData) async {
-    if (!(await hasInternet())) return LocalStorageService.addNewData(formData);
+      if (!(await InternetConnectionChecker().hasConnection)) {
 
     if (collection == null) init();
     await collection?.add(formData.toMapForFirebase());
@@ -25,6 +24,8 @@ class FormService {
 
   static Future<void> addSavedFormData() async {
     if (collection == null) init();
+    if (!(await InternetConnectionChecker().hasConnection)) return;
+
     final allData = LocalStorageService.dataToSend;
     final List<Future> futures = [];
     for (final formData in allData) {
@@ -34,17 +35,5 @@ class FormService {
     }
     await Future.wait(futures);
     LocalStorageService.clear();
-  }
-
-  static Future<bool> hasInternet() async {
-    if (kIsWeb) return true;
-
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) return true;
-    } on SocketException catch (_) {
-      return false;
-    }
-    return false;
   }
 }
