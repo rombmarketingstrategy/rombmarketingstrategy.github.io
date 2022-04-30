@@ -12,15 +12,15 @@ class FormService {
 
   static Future<void> init() async {
     if (await hasInternet()) {
-    collection = FirebaseFirestore.instance.collection('form');
-  }
+      collection = FirebaseFirestore.instance.collection('form');
+    }
   }
 
   static Future<void> addFormData(FormData formData) async {
     if (!(await hasInternet())) return LocalStorageService.addNewData(formData);
 
     if (collection == null) init();
-    await collection?.add(formData.toMap());
+    await collection?.add(formData.toMapForFirebase());
   }
 
   static Future<void> addSavedFormData() async {
@@ -29,7 +29,7 @@ class FormService {
     final List<Future> futures = [];
     for (final formData in allData) {
       futures.add(() async {
-        await collection?.add(formData.toMap());
+        await collection?.add(formData.toMapForFirebase());
       }());
     }
     await Future.wait(futures);

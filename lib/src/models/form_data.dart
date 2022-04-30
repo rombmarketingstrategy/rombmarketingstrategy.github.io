@@ -100,6 +100,13 @@ class FormData {
     };
   }
 
+  Map<String, dynamic> toMapForFirebase() {
+    return {
+      ...toMap(),
+      'timestamp': timestamp,
+    };
+  }
+
   factory FormData.fromMap(Map<String, dynamic> map) {
     return FormData(
       map['recommendation'] as String,
