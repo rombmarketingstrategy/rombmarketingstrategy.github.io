@@ -2,9 +2,9 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rombmarketingstrategy/src/models/form_data.dart';
 import 'package:rombmarketingstrategy/src/services/local_storage_service.dart';
+import 'package:rombmarketingstrategy/src/utils/has_internet.dart';
 
 class FormService {
   FormService._();
@@ -12,7 +12,7 @@ class FormService {
   static List<FormData> formDatas = [];
 
   static Future<void> init() async {
-    if (await InternetConnectionChecker().hasConnection) {
+    if (await hasInternet()) {
       collection = FirebaseFirestore.instance.collection('form');
     }
   }
@@ -24,7 +24,7 @@ class FormService {
 
   static Future<bool> addFormData(FormData formData) async {
     try {
-      if (!(await InternetConnectionChecker().hasConnection)) {
+      if (!(await hasInternet())) {
         LocalStorageService.addNewData(formData);
         return true;
       }
@@ -43,7 +43,7 @@ class FormService {
 
   static Future<void> addSavedFormData() async {
     if (collection == null) init();
-    if (!(await InternetConnectionChecker().hasConnection)) return;
+    if (!(await hasInternet())) return;
 
     final allData = LocalStorageService.dataToSend;
     final List<Future> futures = [];

@@ -10,6 +10,7 @@ import 'package:rombmarketingstrategy/src/services/form_service.dart';
 import 'package:rombmarketingstrategy/src/services/local_storage_service.dart';
 import 'package:rombmarketingstrategy/src/utils/app_navigator.dart';
 import 'package:rombmarketingstrategy/src/utils/constants.dart';
+import 'package:rombmarketingstrategy/src/utils/has_internet.dart';
 import 'package:rombmarketingstrategy/src/utils/paddings.dart';
 import 'package:rombmarketingstrategy/src/utils/spacers.dart';
 
@@ -31,7 +32,7 @@ class _AdminScreenState extends State<AdminScreen> {
   void onBack() => AppNavigator.back(context);
 
   Future<void> onSave() async {
-    if (!(await InternetConnectionChecker().hasConnection)) {
+    if (!(await hasInternet())) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Theme.of(context).errorColor,
